@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Story Engine</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Project navigation">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">S</div>
+          <div>
+            <p class="eyebrow">AI Content Studio</p>
+            <h1>Student Story Engine</h1>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Workspace sections">
+          <a href="#intake" class="nav-link active">Story Intake</a>
+          <a href="#outputs" class="nav-link">Generated Content</a>
+          <a href="#distribution" class="nav-link">Distribution</a>
+        </nav>
+
+        <div class="sidebar-stats" aria-label="Studio metrics">
+          <div>
+            <strong>4</strong>
+            <span>Channels</span>
+          </div>
+          <div>
+            <strong>12</strong>
+            <span>Assets</span>
+          </div>
+          <div>
+            <strong>1</strong>
+            <span>Brief</span>
+          </div>
+        </div>
+
+        <div class="sidebar-panel">
+          <p class="panel-label">Campaign Readiness</p>
+          <div class="readiness-meter" aria-hidden="true">
+            <span id="readinessBar"></span>
+          </div>
+          <p id="readinessText">Fill the intake to generate a story pack.</p>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <section class="topbar">
+          <div class="hero-copy">
+            <p class="eyebrow">Educational Marketing Workflow</p>
+            <h2>Transform student wins into publish-ready content.</h2>
+            <p class="hero-subcopy">Build a complete campaign pack from one achievement brief: social posts, testimonial copy, video script, proof points, and a distribution path.</p>
+            <div class="hero-metrics" aria-label="Content generation summary">
+              <div>
+                <strong>3x</strong>
+                <span>Faster repurposing</span>
+              </div>
+              <div>
+                <strong>4</strong>
+                <span>Platform formats</span>
+              </div>
+              <div>
+                <strong>100%</strong>
+                <span>Story-led output</span>
+              </div>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost-button" id="loadSampleBtn" type="button">Load Sample</button>
+            <button class="primary-button" id="generateBtn" type="button">Generate Story Pack</button>
+          </div>
+        </section>
+
+        <section id="intake" class="content-grid" aria-label="Story intake">
+          <form class="workspace-panel form-panel" id="storyForm">
+            <div class="section-heading">
+              <p class="eyebrow">Input</p>
+              <h3>Student Achievement Brief</h3>
+            </div>
+
+            <div class="field-grid">
+              <label>
+                Student name
+                <input id="studentName" name="studentName" type="text" placeholder="Aisha Khan" />
+              </label>
+              <label>
+                Program or course
+                <input id="programName" name="programName" type="text" placeholder="Full Stack Web Development" />
+              </label>
+              <label>
+                Organization
+                <input id="organizationName" name="organizationName" type="text" placeholder="BrightPath Academy" />
+              </label>
+              <label>
+                Target audience
+                <select id="audience" name="audience">
+                  <option value="prospective students">Prospective students</option>
+                  <option value="parents">Parents</option>
+                  <option value="hiring partners">Hiring partners</option>
+                  <option value="alumni community">Alumni community</option>
+                </select>
+              </label>
+              <label>
+                Story angle
+                <select id="storyAngle" name="storyAngle">
+                  <option value="career">Career transformation</option>
+                  <option value="confidence">Confidence journey</option>
+                  <option value="project">Project-led proof</option>
+                  <option value="community">Learning community</option>
+                </select>
+              </label>
+              <label>
+                Primary call to action
+                <input id="ctaCustom" name="ctaCustom" type="text" placeholder="Book a counselling call this week" />
+              </label>
+            </div>
+
+            <label>
+              Achievement summary
+              <textarea id="achievement" name="achievement" rows="4" placeholder="Placed as a junior developer after completing three portfolio projects."></textarea>
+            </label>
+
+            <label>
+              Challenge before joining
+              <textarea id="challenge" name="challenge" rows="3" placeholder="Had basic computer knowledge but no structured coding practice or interview confidence."></textarea>
+            </label>
+
+            <label>
+              Proof points
+              <textarea id="proofPoints" name="proofPoints" rows="3" placeholder="Built a job portal, completed mock interviews, received 2 offer letters."></textarea>
+            </label>
+
+            <div class="control-row">
+              <fieldset>
+                <legend>Tone</legend>
+                <div class="segmented-control" role="radiogroup" aria-label="Tone">
+                  <label><input type="radio" name="tone" value="inspiring" checked /> Inspiring</label>
+                  <label><input type="radio" name="tone" value="professional" /> Professional</label>
+                  <label><input type="radio" name="tone" value="warm" /> Warm</label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Content depth</legend>
+                <div class="range-control">
+                  <input id="depth" name="depth" type="range" min="1" max="3" value="2" />
+                  <span id="depthLabel">Balanced</span>
+                </div>
+              </fieldset>
+            </div>
+
+            <fieldset>
+              <legend>Platforms</legend>
+              <div class="checkbox-grid">
+                <label><input type="checkbox" name="platforms" value="linkedin" checked /> LinkedIn</label>
+                <label><input type="checkbox" name="platforms" value="instagram" checked /> Instagram</label>
+                <label><input type="checkbox" name="platforms" value="youtube" checked /> YouTube</label>
+                <label><input type="checkbox" name="platforms" value="testimonial" checked /> Testimonial</label>
+              </div>
+            </fieldset>
+          </form>
+
+          <aside class="workspace-panel strategy-panel">
+            <div class="section-heading">
+              <p class="eyebrow">Narrative Strategy</p>
+              <h3>Trust signals</h3>
+            </div>
+            <div class="angle-card" id="angleCard">
+              <p class="panel-label">Selected angle</p>
+              <strong>Career transformation</strong>
+              <span>Frame the achievement as a visible move from learning to opportunity.</span>
+            </div>
+            <div class="signal-list" id="signalList">
+              <article>
+                <span>01</span>
+                <div>
+                  <h4>Specific outcome</h4>
+                  <p>Name the measurable achievement clearly.</p>
+                </div>
+              </article>
+              <article>
+                <span>02</span>
+                <div>
+                  <h4>Before-to-after arc</h4>
+                  <p>Show the transformation, not only the result.</p>
+                </div>
+              </article>
+              <article>
+                <span>03</span>
+                <div>
+                  <h4>Human proof</h4>
+                  <p>Use projects, interviews, or mentor feedback as evidence.</p>
+                </div>
+              </article>
+            </div>
+          </aside>
+        </section>
+
+        <section id="outputs" class="workspace-panel output-panel" aria-label="Generated content">
+          <div class="output-header">
+            <div class="section-heading">
+              <p class="eyebrow">Output</p>
+              <h3>Generated Story Pack</h3>
+            </div>
+            <div class="tab-list" role="tablist" aria-label="Generated output tabs">
+              <button class="tab-button active" type="button" data-tab="linkedin">LinkedIn</button>
+              <button class="tab-button" type="button" data-tab="instagram">Instagram</button>
+              <button class="tab-button" type="button" data-tab="youtube">YouTube</button>
+              <button class="tab-button" type="button" data-tab="testimonial">Testimonial</button>
+            </div>
+          </div>
+
+          <div class="preview-grid" aria-label="Channel previews">
+            <article class="preview-card linkedin-preview">
+              <span>LinkedIn</span>
+              <strong id="previewLinkedIn">Professional outcome post</strong>
+              <p id="previewLinkedInMeta">Generate a story pack to preview the hook.</p>
+            </article>
+            <article class="preview-card instagram-preview">
+              <span>Instagram</span>
+              <strong id="previewInstagram">Carousel caption</strong>
+              <p id="previewInstagramMeta">Proof bullets and save-worthy caption.</p>
+            </article>
+            <article class="preview-card youtube-preview">
+              <span>YouTube</span>
+              <strong id="previewYouTube">Shorts script</strong>
+              <p id="previewYouTubeMeta">Scene-by-scene video narrative.</p>
+            </article>
+          </div>
+
+          <div class="output-stage">
+            <div class="copy-area">
+              <textarea id="outputText" aria-label="Generated content output" spellcheck="true"></textarea>
+              <div class="copy-actions">
+                <button class="ghost-button" id="copyBtn" type="button">Copy</button>
+                <button class="ghost-button" id="saveDraftBtn" type="button">Save Draft</button>
+                <button class="ghost-button" id="downloadBtn" type="button">Download .txt</button>
+              </div>
+            </div>
+            <aside class="quality-box" aria-label="Content quality score">
+              <p class="panel-label">Story Quality</p>
+              <strong id="qualityScore">0%</strong>
+              <p id="qualityNote">Generate content to see channel guidance.</p>
+              <dl>
+                <div>
+                  <dt>Hook</dt>
+                  <dd id="hookScore">Pending</dd>
+                </div>
+                <div>
+                  <dt>Proof</dt>
+                  <dd id="proofScore">Pending</dd>
+                </div>
+                <div>
+                  <dt>CTA</dt>
+                  <dd id="ctaScore">Pending</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </section>
+
+        <section id="distribution" class="workspace-panel distribution-panel" aria-label="Distribution workflow">
+          <div class="section-heading">
+            <p class="eyebrow">Workflow</p>
+            <h3>Creation and Distribution Checklist</h3>
+          </div>
+          <div class="timeline">
+            <article>
+              <span>Day 1</span>
+              <strong>Publish credibility</strong>
+              <p>Post the LinkedIn outcome story with project proof and a clear admissions CTA.</p>
+            </article>
+            <article>
+              <span>Day 2</span>
+              <strong>Build emotion</strong>
+              <p>Share the Instagram version with a student photo, carousel slides, and save-friendly copy.</p>
+            </article>
+            <article>
+              <span>Day 3</span>
+              <strong>Extend reach</strong>
+              <p>Release the Shorts script as a quick transformation story and reuse the testimonial on landing pages.</p>
+            </article>
+          </div>
+          <div class="checklist" id="checklist">
+            <label><input type="checkbox" /> Confirm student consent and spelling.</label>
+            <label><input type="checkbox" /> Attach proof assets: photo, project link, certificate, or offer letter.</label>
+            <label><input type="checkbox" /> Adapt captions for each platform's audience behavior.</label>
+            <label><input type="checkbox" /> Schedule LinkedIn, Instagram, and YouTube Shorts distribution.</label>
+            <label><input type="checkbox" /> Save testimonial for landing page and admissions follow-up.</label>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
